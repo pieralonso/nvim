@@ -8,7 +8,7 @@ return {
                 accept_word = "<S-Tab>",
             },
 	    color = {
-		    suggestion_color = "#8D8D8D",
+		    suggestion_color = "#9a9a9a",
 		    cterm = 244,
 
 	    },

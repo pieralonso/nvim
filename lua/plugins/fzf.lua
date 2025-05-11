@@ -4,7 +4,7 @@ return {
     opts = {
         winopts = {
             height = 0.85,
-            width = 0.50,
+            width = 0.60,
             preview = {
                 hidden = true,
                 layout = "vertical",

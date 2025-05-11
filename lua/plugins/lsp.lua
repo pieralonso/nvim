@@ -80,7 +80,7 @@ return {
             })
 
             require('mason-lspconfig').setup({
-                ensure_installed = {lua_ls, ts_ls, angularls, cssls, html, prettier},
+                ensure_installed = { "lua_ls", "ts_ls", "angularls", "cssls", "html", },
                 handlers = {
                     -- this first function is the "default handler"
                     -- it applies to every language server without a "custom handler"
@@ -88,16 +88,6 @@ return {
                         require('lspconfig')[server_name].setup({})
                     end,
                 }
-            })
-            vim.diagnostic.config({
-                signs = {
-                    text = {
-                        [vim.diagnostic.severity.ERROR] = 'E',
-                        [vim.diagnostic.severity.WARN] = 'W',
-                        [vim.diagnostic.severity.HINT] = 'H',
-                        [vim.diagnostic.severity.INFO] = 'I',
-                    },
-                },
             })
         end
     }
