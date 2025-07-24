@@ -67,3 +67,5 @@ end, { noremap = true, silent = true })
 vim.keymap.set('n', '<Leader>²', function()
     vim.cmd('Prettier') -- Aplica Prettier
 end, { noremap = true, silent = true })
+
+vim.cmd.colorscheme "default"
