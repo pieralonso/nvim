@@ -46,8 +46,8 @@ return {
       end
     end
 
-    vim.keymap.set('n', '<leader>e', smart_toggle, { noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>E', open_close_neotree, { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>E', smart_toggle, { noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>e', open_close_neotree, { noremap = true, silent = true })
   end,
 }
 
