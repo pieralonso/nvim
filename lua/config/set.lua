@@ -69,3 +69,10 @@ vim.keymap.set('n', '<Leader>²', function()
 end, { noremap = true, silent = true })
 
 vim.cmd.colorscheme "default"
+vim.cmd [[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi LineNr guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
+]]
