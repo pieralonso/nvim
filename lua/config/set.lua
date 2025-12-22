@@ -1,8 +1,8 @@
 vim.g.mapleader = ' '
 -- Comportamiento de edición
 vim.opt.expandtab = true   -- Convierte cada tabulación en espacios.
-vim.opt.shiftwidth = 4     -- Establece que cada nivel de indentación tenga 4 espacios.
-vim.opt.tabstop = 4        -- Establece que las tabulaciones se muestren como 4 espacios de ancho.
+vim.opt.shiftwidth = 2     -- Establece que cada nivel de indentación tenga 4 espacios.
+vim.opt.tabstop = 2        -- Establece que las tabulaciones se muestren como 4 espacios de ancho.
 vim.opt.wrap = false       -- Deshabilita el ajuste de texto a la línea.
 
 vim.opt.autoindent = true  -- Reproduce la indentación de la línea anterior automáticamente.
@@ -60,19 +60,38 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 -- mapeo de guardado
 vim.keymap.set('n', '<Leader>s', function()
+    -- 1. Verifica si el búfer actual tiene un nombre de archivo
+    if vim.fn.expand('%:p') == '' then
+        -- Si no tiene nombre (como al abrir nvim por primera vez),
+        -- simplemente se salta el proceso de guardado y Prettier.
+        -- Opcionalmente, puedes notificar al usuario:
+        vim.notify('ERROR: El búfer no tiene nombre de archivo.', vim.log.levels.WARN)
+        return
+    end
+
+    -- 2. Ejecuta Prettier (solo si el archivo tiene nombre)
     vim.cmd('Prettier')
-    vim.cmd('w') -- Guarda el archivo
+
+    -- 3. Guarda el archivo (solo si el archivo tiene nombre)
+    vim.cmd('w')
+
 end, { noremap = true, silent = true })
+-- vim.keymap.set('n', '<Leader>s', function()
+--     -- vim.cmd('Prettier')
+--     vim.cmd('w') -- Guarda el archivo
+-- end, { noremap = true, silent = true })
 
 vim.keymap.set('n', '<Leader>²', function()
     vim.cmd('Prettier') -- Aplica Prettier
 end, { noremap = true, silent = true })
 
-vim.cmd.colorscheme "default"
-vim.cmd [[
-  hi Normal guibg=NONE ctermbg=NONE
-  hi NormalNC guibg=NONE ctermbg=NONE
-  hi EndOfBuffer guibg=NONE ctermbg=NONE
-  hi LineNr guibg=NONE ctermbg=NONE
-  hi SignColumn guibg=NONE ctermbg=NONE
-]]
+
+
+vim.keymap.set('n', '<Leader>y', function()
+  vim.cmd('buffer #')
+end, { desc = 'Ir al último archivo (buffer alterno)' })
+
+
+-- set colorscheme to default
+
+
